@@ -30,51 +30,26 @@
  
  */
 
-long findNoRepeatString(const std::string& input)
+long findNoRepeatString(const std::string& s)
 {
+    std::size_t hash_map[256] = {0};
+    std::size_t max_length = 0;
+    std::size_t index_left = 0;
     
-    std::vector<std::string> all_data;
-    
-    // 一条数据
-    std::vector<char> one_data;
-    // 遍历输入字符串
-    for (long n = 0 ; n < input.length() ; ++n) {
-        char ch = input[n];
+    for (std::size_t n = 0; n < s.length(); ++n) {
+        char ch = s[n];
+        std::size_t next_pos = hash_map[ch];
         
-        if (one_data.size() > 0) {
-            
-            // 遍历存在的字符串
-            bool is_ch_exist = false;
-            for (long t=0; t<one_data.size(); ++t) {
-                char exist = one_data[t];
-                
-                // 存在则说明 已经重复
-                if (ch == exist) {
-                    is_ch_exist = true;
-                    break;
-                }
-            }
-            
-            if (is_ch_exist) {
-                std::string one(one_data.cbegin() , one_data.cend());
-                all_data.push_back(one);
-                one_data.clear();
-            }
-            
-            one_data.push_back(ch);
-            
+        // 遇到重复，则直接查看是否要跳转
+        if (next_pos == 0 || next_pos < index_left) {
+            max_length = std::max(max_length , n+1 - index_left);
         } else {
-            one_data.push_back(ch);
+            index_left = next_pos;
         }
+        
+        // 记录当前字符串位置，+1 是表示长度，i=0开始计算。
+        hash_map[ch] = n+1;
     }
     
-    std::string output = "";
-    for (long a = 0; a < all_data.size(); ++a) {
-        std::string one = all_data[a];
-        if (one.length() > output.length()) {
-            output = one;
-        }
-    }
-    
-    return output.length();
+    return max_length;
 }
