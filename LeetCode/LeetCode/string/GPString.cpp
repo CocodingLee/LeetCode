@@ -55,7 +55,6 @@ long findNoRepeatString(const std::string& s)
     return max_length;
 }
 
-
 /*
  
  编写一个函数来查找字符串数组中的最长公共前缀。
@@ -107,7 +106,6 @@ std::string longestCommonPrefix(std::vector<std::string>& strs)
     
 }
 
-
 /*
  给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。
  
@@ -133,53 +131,6 @@ std::string longestCommonPrefix(std::vector<std::string>& strs)
  
  参考：https://blog.csdn.net/qq_26410101/article/details/81042615
  */
-
-//按模式串生成vector,next(T.size())
-void NEXT(const std::string&T, std::vector<int>&next)
-{
-    next[0] = -1;
-    for (int i = 1; i<T.size(); ++i)
-    {
-        int j = next[i - 1];
-        
-        while (j >= 0 && T[i - 1] != T[j]) {
-            //递推计算
-            j = next[j];
-        }
-        
-        if (j >= 0 &&  T[i - 1] == T[j]) {
-          next[i] = j + 1;
-        } else {
-          next[i] = 0;
-        }
-    }
-}
-
-std::string::size_type COUNT_KMP(const std::string&S, const std::string&T)
-{
-    //利用模式串T的next函数求T在主串S中的个数count的KMP算法
-    //其中T非空，
-    std::vector<int> next(T.size());
-    
-    NEXT(T, next);
-    
-    std::string::size_type index, count = 0;
-    for (index = 0; index<S.size(); ++index){
-        int pos = 0;
-        std::string::size_type iter = index;
-        while (pos<T.size() && iter<S.size()){
-            if (S[iter] == T[pos]){ ++iter; ++pos; }
-            else{
-                if (pos == 0) ++iter;
-                else pos = next[pos - 1] + 1;
-            }
-        }
-        
-        if (pos == T.size() && (iter - index) == T.size()) ++count;
-    }
-    
-    return count;
-}
 
 bool checkInclusion(std::string s1, std::string s2)
 {
@@ -218,3 +169,55 @@ bool checkInclusion(std::string s1, std::string s2)
     
 }
 
+/*
+ 给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
+ 
+ 示例 1:
+ 
+ 输入: num1 = "2", num2 = "3"
+ 输出: "6"
+ 示例 2:
+ 
+ 输入: num1 = "123", num2 = "456"
+ 输出: "56088"
+ 说明：
+ 
+ num1 和 num2 的长度小于110。
+ num1 和 num2 只包含数字 0-9。
+ num1 和 num2 均不以零开头，除非是数字 0 本身。
+ 不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。
+
+ 参考：https://www.cnblogs.com/ariel-dreamland/p/9139468.html
+ */
+
+std::string multiply(std::string num1, std::string num2)
+{
+    if (num1 == "0" || num2 == "0") {
+        return "0";
+    }
+    
+    std::string res;
+    double n1 = num1.size();
+    double n2 = num2.size();
+    double k = n1 + n2 - 2, carry = 0;
+    
+    std::vector<int> v(n1 + n2, 0);
+    for (int i = 0; i < n1; ++i) {
+        for (int j = 0; j < n2; ++j) {
+            v[k - i - j] += (num1[i] - '0') * (num2[j] - '0');
+        }
+    }
+    
+    for (int i = 0; i < n1 + n2; ++i) {
+        v[i] += carry;
+        carry = v[i] / 10;
+        v[i] %= 10;
+    }
+    
+    double i = n1 + n2 - 1;
+    while (v[i] == 0) --i;
+    if (i < 0) return "0";
+    
+    while (i >= 0) res.push_back(v[i--] + '0');
+    return res;
+}

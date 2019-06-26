@@ -36,13 +36,18 @@ int main(int argc, const char * argv[])
         std::cout << long_prefix << "\n";
     }
     
-#endif
-    
     {
         std::string s1 = "ab";
         std::string s2 = "eidbaooo";
         bool is = checkInclusion(s1, s2);
         std::cout << is << "\n";
+    }
+    
+#endif
+    
+    {
+        std::string num = multiply("0", "0");
+        std::cout << num << "\n";
     }
     return 0;
 }

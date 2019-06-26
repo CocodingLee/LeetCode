@@ -27,4 +27,9 @@ std::string longestCommonPrefix(std::vector<std::string>& strs);
 // 检查是否包含子串
 //
 bool checkInclusion(std::string s1, std::string s2);
+
+//
+// 字符串相乘
+//
+std::string multiply(std::string num1, std::string num2);
 #endif /* GPString_hpp */
