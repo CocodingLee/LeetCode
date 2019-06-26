@@ -106,3 +106,115 @@ std::string longestCommonPrefix(std::vector<std::string>& strs)
     return longest_prefix;
     
 }
+
+
+/*
+ 给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。
+ 
+ 换句话说，第一个字符串的排列之一是第二个字符串的子串。
+ 
+ 示例1:
+ 
+ 输入: s1 = "ab" s2 = "eidbaooo"
+ 输出: True
+ 解释: s2 包含 s1 的排列之一 ("ba").
+ 
+ 
+ 示例2:
+ 
+ 输入: s1= "ab" s2 = "eidboaoo"
+ 输出: False
+ 
+ 
+ 注意：
+ 
+ 输入的字符串只包含小写字母
+ 两个字符串的长度都在 [1, 10,000] 之间
+ 
+ 参考：https://blog.csdn.net/qq_26410101/article/details/81042615
+ */
+
+//按模式串生成vector,next(T.size())
+void NEXT(const std::string&T, std::vector<int>&next)
+{
+    next[0] = -1;
+    for (int i = 1; i<T.size(); ++i)
+    {
+        int j = next[i - 1];
+        
+        while (j >= 0 && T[i - 1] != T[j]) {
+            //递推计算
+            j = next[j];
+        }
+        
+        if (j >= 0 &&  T[i - 1] == T[j]) {
+          next[i] = j + 1;
+        } else {
+          next[i] = 0;
+        }
+    }
+}
+
+std::string::size_type COUNT_KMP(const std::string&S, const std::string&T)
+{
+    //利用模式串T的next函数求T在主串S中的个数count的KMP算法
+    //其中T非空，
+    std::vector<int> next(T.size());
+    
+    NEXT(T, next);
+    
+    std::string::size_type index, count = 0;
+    for (index = 0; index<S.size(); ++index){
+        int pos = 0;
+        std::string::size_type iter = index;
+        while (pos<T.size() && iter<S.size()){
+            if (S[iter] == T[pos]){ ++iter; ++pos; }
+            else{
+                if (pos == 0) ++iter;
+                else pos = next[pos - 1] + 1;
+            }
+        }
+        
+        if (pos == T.size() && (iter - index) == T.size()) ++count;
+    }
+    
+    return count;
+}
+
+bool checkInclusion(std::string s1, std::string s2)
+{
+    if (s2.empty()) {
+        return false;
+    }
+    
+    if (s2.length() < s1.length()) {
+        return false;
+    }
+    
+    
+    std::vector<int> memo1(26, 0);
+    std::vector<int> memo2(26, 0);
+    
+    for (int i = 0; i < s1.size(); i++) {
+        ++ memo1[s1[i] - 'a'];
+    }
+    
+    for (int i = 0; i < s2.size(); ++i) {
+        char ch = s2[i];
+        ++ memo2[ch - 'a'];
+        
+        if(i >= s1.size()) {
+            std::string::size_type index = i-s1.size();
+            char ch = s2[index];
+            -- memo2[ch - 'a'];
+        }
+        
+        if (memo1 == memo2) {
+            return true;
+        }
+    }
+    
+    return false;
+    
+}
+

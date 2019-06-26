@@ -25,7 +25,6 @@ int main(int argc, const char * argv[])
         long output4 = findNoRepeatString("dvdf");
         std::cout << "dvdf repeat = " << output4  << "\n";
     }
-#endif
     
     {
         std::vector<std::string> tmp;
@@ -37,6 +36,13 @@ int main(int argc, const char * argv[])
         std::cout << long_prefix << "\n";
     }
     
+#endif
     
+    {
+        std::string s1 = "ab";
+        std::string s2 = "eidbaooo";
+        bool is = checkInclusion(s1, s2);
+        std::cout << is << "\n";
+    }
     return 0;
 }
