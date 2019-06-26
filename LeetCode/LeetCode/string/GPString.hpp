@@ -11,8 +11,10 @@
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 
 long findNoRepeatString(const std::string& input);
+std::string longestCommonPrefix(std::vector<std::string>& strs);
 
 #endif /* GPString_hpp */

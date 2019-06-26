@@ -11,20 +11,32 @@
 
 int main(int argc, const char * argv[])
 {
-
-    long output1 = findNoRepeatString("abcabcbb");
-    std::cout << "abcabcbb repeat = " << output1  << "\n";
+#if 0
+    {
+        long output1 = findNoRepeatString("abcabcbb");
+        std::cout << "abcabcbb repeat = " << output1  << "\n";
+        
+        long output2 = findNoRepeatString("bbbbb");
+        std::cout << "bbbbb repeat = " << output2  << "\n";
+        
+        long output3 = findNoRepeatString("pwwkew");
+        std::cout << "pwwkew repeat = " << output3  << "\n";
+        
+        long output4 = findNoRepeatString("dvdf");
+        std::cout << "dvdf repeat = " << output4  << "\n";
+    }
+#endif
     
-
-    long output2 = findNoRepeatString("bbbbb");
-    std::cout << "bbbbb repeat = " << output2  << "\n";
+    {
+        std::vector<std::string> tmp;
+        tmp.push_back("fl234ower");
+        tmp.push_back("fl234ow");
+        tmp.push_back("fl234ight");
+        
+        std::string long_prefix = longestCommonPrefix(tmp);
+        std::cout << long_prefix << "\n";
+    }
     
-    long output3 = findNoRepeatString("pwwkew");
-    std::cout << "pwwkew repeat = " << output3  << "\n";
-
     
-    long output4 = findNoRepeatString("dvdf");
-    std::cout << "dvdf repeat = " << output4  << "\n";
-
     return 0;
 }
