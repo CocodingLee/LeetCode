@@ -186,7 +186,7 @@ bool checkInclusion(std::string s1, std::string s2)
  num1 和 num2 只包含数字 0-9。
  num1 和 num2 均不以零开头，除非是数字 0 本身。
  不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。
-
+ 
  参考：https://www.cnblogs.com/ariel-dreamland/p/9139468.html
  */
 
@@ -220,4 +220,62 @@ std::string multiply(std::string num1, std::string num2)
     
     while (i >= 0) res.push_back(v[i--] + '0');
     return res;
+}
+
+/*
+ 给定一个字符串，逐个翻转字符串中的每个单词。
+ 
+ 
+ 
+ 示例 1：
+ 
+ 输入: "the sky is blue"
+ 输出: "blue is sky the"
+ 示例 2：
+ 
+ 输入: "  hello world!  "
+ 输出: "world! hello"
+ 解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+ 示例 3：
+ 
+ 输入: "a good   example"
+ 输出: "example good a"
+ 解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+ 
+ 
+ 说明：
+ 
+ 无空格字符构成一个单词。
+ 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+ 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+ 
+ 
+ 进阶：
+ 
+ 请选用 C 语言的用户尝试使用 O(1) 额外空间复杂度的原地解法。
+ */
+
+std::string reverseWords(std::string s)
+{
+    std::string::size_type storeIndex = 0, n = s.size();
+    reverse(s.begin(), s.end());
+    for (std::string::size_type i = 0; i < n; ++i) {
+        if (s[i] != ' ') {
+            if (storeIndex != 0) {
+                s[storeIndex++] = ' ';
+            }
+            
+            std::string::size_type j = i;
+            while (j < n && s[j] != ' ') {
+                s[storeIndex++] = s[j++];
+            }
+            
+            reverse(s.begin() + storeIndex - (j - i), s.begin() + storeIndex);
+            i = j;
+        }
+    }
+    
+    s.resize(storeIndex);
+    
+    return s;
 }

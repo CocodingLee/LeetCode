@@ -43,11 +43,15 @@ int main(int argc, const char * argv[])
         std::cout << is << "\n";
     }
     
-#endif
-    
     {
         std::string num = multiply("0", "0");
         std::cout << num << "\n";
+    }
+#endif
+    
+    {
+        std::string re = reverseWords("a good   example");
+        std::cout << re << "\n";
     }
     return 0;
 }
