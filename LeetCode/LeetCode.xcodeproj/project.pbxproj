@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E4B3ACAB22C34A140004A2D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACAA22C34A140004A2D3 /* main.cpp */; };
 		E4B3ACB422C34A910004A2D3 /* GPString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB222C34A910004A2D3 /* GPString.cpp */; };
+		E4B3ACB722C6F7200004A2D3 /* GPArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		E4B3ACAA22C34A140004A2D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E4B3ACB222C34A910004A2D3 /* GPString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPString.cpp; sourceTree = "<group>"; };
 		E4B3ACB322C34A910004A2D3 /* GPString.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPString.hpp; sourceTree = "<group>"; };
+		E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPArray.cpp; sourceTree = "<group>"; };
+		E4B3ACB622C6F7200004A2D3 /* GPArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPArray.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,19 +63,13 @@
 		E4B3ACA922C34A140004A2D3 /* LeetCode */ = {
 			isa = PBXGroup;
 			children = (
-				E4B3ACB122C34A630004A2D3 /* string */,
+				E4B3ACB322C34A910004A2D3 /* GPString.hpp */,
+				E4B3ACB222C34A910004A2D3 /* GPString.cpp */,
+				E4B3ACB622C6F7200004A2D3 /* GPArray.hpp */,
+				E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */,
 				E4B3ACAA22C34A140004A2D3 /* main.cpp */,
 			);
 			path = LeetCode;
-			sourceTree = "<group>";
-		};
-		E4B3ACB122C34A630004A2D3 /* string */ = {
-			isa = PBXGroup;
-			children = (
-				E4B3ACB322C34A910004A2D3 /* GPString.hpp */,
-				E4B3ACB222C34A910004A2D3 /* GPString.cpp */,
-			);
-			path = string;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +130,7 @@
 			files = (
 				E4B3ACAB22C34A140004A2D3 /* main.cpp in Sources */,
 				E4B3ACB422C34A910004A2D3 /* GPString.cpp in Sources */,
+				E4B3ACB722C6F7200004A2D3 /* GPArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

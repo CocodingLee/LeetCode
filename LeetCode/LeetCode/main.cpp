@@ -7,7 +7,9 @@
 //
 
 #include <iostream>
-#include "string/GPString.hpp"
+#include "GPString.hpp"
+#include "GPArray.hpp"
+
 
 int main(int argc, const char * argv[])
 {
@@ -47,11 +49,44 @@ int main(int argc, const char * argv[])
         std::string num = multiply("0", "0");
         std::cout << num << "\n";
     }
-#endif
     
     {
         std::string re = reverseWords("a good   example");
         std::cout << re << "\n";
+    }
+    
+    {
+        std::string re = simplifyPath("/a/./b/../../c/");
+        std::cout << re << "\n";
+    }
+    
+    {
+        std::vector<std::string> v = restoreIpAddresses("010010");
+        for (std::string const& ip : v) {
+            std::cout << ip << "\n";
+        }
+    }
+    
+#endif
+    
+    {
+        int a[] = {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
+        std::vector<int> nums(a , a+sizeof(a)/sizeof(a[0]));
+        std::vector<std::vector<int>> res = threeSum(nums);
+        for (std::vector<int> r : res) {
+            std::string out = "[";
+            for (std::vector<int>::size_type n = 0 ; n < r.size() ; ++n) {
+                int value = r[n];
+                out.append(std::to_string(value));
+                if (n < r.size() - 1) {
+                    out.append(", ");
+                }
+            }
+            
+            out.append("]");
+            
+            std::cout << out << "\n";
+        }
     }
     return 0;
 }

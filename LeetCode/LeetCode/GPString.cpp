@@ -8,6 +8,7 @@
 
 #include "GPString.hpp"
 #include <vector>
+#include <sstream>
 
 /*
  给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -29,7 +30,14 @@
  请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
  
  参考：https://www.cnblogs.com/ariel-dreamland/p/8668286.html
+ 
  */
+
+////////////////////////////////////////////////////////
+//
+// 重点
+//
+////////////////////////////////////////////////////////
 
 long findNoRepeatString(const std::string& s)
 {
@@ -278,4 +286,118 @@ std::string reverseWords(std::string s)
     s.resize(storeIndex);
     
     return s;
+}
+
+/*
+ 以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。
+ 
+ 在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径
+ 
+ 请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须只有一个斜杠 /。最后一个目录名（如果存在）不能以 / 结尾。此外，规范路径必须是表示绝对路径的最短字符串。
+ 
+ 示例 1：
+ 
+ 输入："/home/"
+ 输出："/home"
+ 解释：注意，最后一个目录名后面没有斜杠。
+ 示例 2：
+ 
+ 输入："/../"
+ 输出："/"
+ 解释：从根目录向上一级是不可行的，因为根是你可以到达的最高级。
+ 示例 3：
+ 
+ 输入："/home//foo/"
+ 输出："/home/foo"
+ 解释：在规范路径中，多个连续斜杠需要用一个斜杠替换。
+ 示例 4：
+ 
+ 输入："/a/./b/../../c/"
+ 输出："/c"
+ 示例 5：
+ 
+ 输入："/a/../../b/../c//.//"
+ 输出："/c"
+ 示例 6：
+ 
+ 输入："/a//b////c/d//././/.."
+ 输出："/a/b/c"
+ */
+
+////////////////////////////////////////////////////////
+//
+// 重点
+//
+////////////////////////////////////////////////////////
+
+std::string simplifyPath(std::string path)
+{
+    std::string res, t;
+    std::stringstream ss(path);
+    std::vector<std::string> v;
+    
+    while (getline(ss, t, '/')) {
+        if (t == "" || t == ".") {
+            continue;
+        }
+        
+        if (t == ".." && !v.empty()) {
+            v.pop_back();
+        } else if (t != "..") {
+            v.push_back(t);
+        }
+    }
+    
+    for (std::string s : v){
+        res += "/" + s;
+    }
+    
+    return res.empty() ? "/" : res;
+}
+
+/*
+ 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
+ 
+ 示例:
+ 
+ 输入: "25525511135"
+ 输出: ["255.255.11.135", "255.255.111.35"]
+ 
+ https://www.cnblogs.com/ariel-dreamland/p/9159611.html
+ */
+
+////////////////////////////////////////////////////////
+//
+// 重点
+//
+////////////////////////////////////////////////////////
+
+void helper(std::string const& s, int n, std::string const& out, std::vector<std::string>& res)
+{
+    if (n == 4) {
+        if (s.empty()) {
+            res.push_back(out);
+        }
+    } else {
+        for (int k = 1; k < 4; ++k) {
+            if (s.size() < k) {
+                break;
+            }
+            
+            int val = atoi(s.substr(0, k).c_str());
+            std::string tmp = std::to_string(val);
+            if (val > 255 || k != tmp.size()) {
+                continue;
+            }
+            
+            helper(s.substr(k), n + 1, out + s.substr(0, k) + (n == 3 ? "" : "."), res);
+        }
+    }
+}
+
+std::vector<std::string> restoreIpAddresses(std::string s)
+{
+    std::vector<std::string> res;
+    helper(s, 0, "", res);
+    return res;
 }

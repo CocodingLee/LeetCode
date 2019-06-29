@@ -37,4 +37,17 @@ std::string multiply(std::string num1, std::string num2);
 // 翻转字符串里的单词
 //
 std::string reverseWords(std::string s);
+
+//
+// 分割字符串
+//
+std::string simplifyPath(std::string path);
+
+//
+// 复原IP地址
+//
+std::vector<std::string> restoreIpAddresses(std::string s);
+
+
+
 #endif /* GPString_hpp */
