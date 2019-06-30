@@ -10,6 +10,8 @@
 #include "GPString.hpp"
 #include "GPArray.hpp"
 
+// 快速排序解释 https://www.cnblogs.com/KuJo/p/8544775.html
+
 
 int main(int argc, const char * argv[])
 {
@@ -67,8 +69,6 @@ int main(int argc, const char * argv[])
         }
     }
     
-#endif
-    
     {
         int a[] = {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
         std::vector<int> nums(a , a+sizeof(a)/sizeof(a[0]));
@@ -87,6 +87,22 @@ int main(int argc, const char * argv[])
             
             std::cout << out << "\n";
         }
+    }
+
+    {   
+        int a[] = {5,1,3};
+        std::vector<int> nums(a , a+sizeof(a)/sizeof(a[0]));
+        std::vector<int>::size_type pos = search(nums, 5);
+        std::cout << "seach pos = " << pos << "\n";
+    }
+    
+#endif
+    
+    {
+        int a [] = {0,1,0,2,1,0,1,3,2,1,2,1};
+        std::vector<int> tmp(a,a+sizeof(a)/sizeof(a[0]));
+        std::vector<int>::size_type count = trap(tmp);
+        std::cout << "trap count = " << count << "\n";
     }
     return 0;
 }

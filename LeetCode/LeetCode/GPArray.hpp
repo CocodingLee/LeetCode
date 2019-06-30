@@ -16,4 +16,18 @@
 //
 std::vector<std::vector<int>> threeSum(std::vector<int>& nums);
 
+//
+// 计算最大面积
+//
+int maxAreaOfIsland(std::vector<std::vector<int>>& grid);
+
+//
+// 搜索旋转排序数组
+//
+int search(std::vector<int>& nums, int target);
+
+//
+// 最多装多少水
+//
+std::vector<int>::size_type trap(std::vector<int>& height);
 #endif /* GPArray_hpp */
