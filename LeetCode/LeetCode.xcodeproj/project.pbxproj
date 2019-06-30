@@ -10,6 +10,7 @@
 		E4B3ACAB22C34A140004A2D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACAA22C34A140004A2D3 /* main.cpp */; };
 		E4B3ACB422C34A910004A2D3 /* GPString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB222C34A910004A2D3 /* GPString.cpp */; };
 		E4B3ACB722C6F7200004A2D3 /* GPArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */; };
+		E4B3ACBA22C853AF0004A2D3 /* GPList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB822C853AF0004A2D3 /* GPList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		E4B3ACB322C34A910004A2D3 /* GPString.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPString.hpp; sourceTree = "<group>"; };
 		E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPArray.cpp; sourceTree = "<group>"; };
 		E4B3ACB622C6F7200004A2D3 /* GPArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPArray.hpp; sourceTree = "<group>"; };
+		E4B3ACB822C853AF0004A2D3 /* GPList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPList.cpp; sourceTree = "<group>"; };
+		E4B3ACB922C853AF0004A2D3 /* GPList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				E4B3ACB222C34A910004A2D3 /* GPString.cpp */,
 				E4B3ACB622C6F7200004A2D3 /* GPArray.hpp */,
 				E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */,
+				E4B3ACB922C853AF0004A2D3 /* GPList.hpp */,
+				E4B3ACB822C853AF0004A2D3 /* GPList.cpp */,
 				E4B3ACAA22C34A140004A2D3 /* main.cpp */,
 			);
 			path = LeetCode;
@@ -130,6 +135,7 @@
 			files = (
 				E4B3ACAB22C34A140004A2D3 /* main.cpp in Sources */,
 				E4B3ACB422C34A910004A2D3 /* GPString.cpp in Sources */,
+				E4B3ACBA22C853AF0004A2D3 /* GPList.cpp in Sources */,
 				E4B3ACB722C6F7200004A2D3 /* GPArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

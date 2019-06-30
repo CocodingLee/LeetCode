@@ -9,6 +9,7 @@
 #include <iostream>
 #include "GPString.hpp"
 #include "GPArray.hpp"
+#include "GPList.hpp"
 
 // 快速排序解释 https://www.cnblogs.com/KuJo/p/8544775.html
 
@@ -96,13 +97,33 @@ int main(int argc, const char * argv[])
         std::cout << "seach pos = " << pos << "\n";
     }
     
-#endif
-    
     {
         int a [] = {0,1,0,2,1,0,1,3,2,1,2,1};
         std::vector<int> tmp(a,a+sizeof(a)/sizeof(a[0]));
         std::vector<int>::size_type count = trap(tmp);
         std::cout << "trap count = " << count << "\n";
     }
+    
+#endif
+    
+    {
+        ListNode* p1 = new ListNode(1);
+        ListNode* p2 = new ListNode(2);
+        ListNode* p3 = new ListNode(3);
+        ListNode* p4 = new ListNode(4);
+        ListNode* p5 = new ListNode(5);
+        
+        p1->next = p2;
+        p2->next = p3;
+        p3->next = p4;
+        p4->next = p5;
+        
+        //ListNode* head = reverseList(p1);
+        ListNode* head = reverseList_dfs(p1);
+        std::cout << head << "\n";
+    }
+    
+    
+    
     return 0;
 }
