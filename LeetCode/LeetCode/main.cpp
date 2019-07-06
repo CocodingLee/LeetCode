@@ -104,8 +104,6 @@ int main(int argc, const char * argv[])
         std::cout << "trap count = " << count << "\n";
     }
     
-#endif
-    
     {
         ListNode* p1 = new ListNode(1);
         ListNode* p2 = new ListNode(2);
@@ -122,8 +120,53 @@ int main(int argc, const char * argv[])
         ListNode* head = reverseList_dfs(p1);
         std::cout << head << "\n";
     }
+#endif
     
-    
+    {
+        ListNode* p1 = new ListNode(1);
+        ListNode* p2 = new ListNode(2);
+        ListNode* p3 = new ListNode(3);
+        ListNode* p4 = new ListNode(4);
+        ListNode* p5 = new ListNode(5);
+        
+        p1->next = p2;
+        p2->next = p3;
+        p3->next = p4;
+        p4->next = p5;
+        
+        ListNode* n1 = new ListNode(3);
+        ListNode* n2 = new ListNode(4);
+        ListNode* n3 = new ListNode(5);
+        ListNode* n4 = new ListNode(7);
+        ListNode* n5 = new ListNode(9);
+        
+        n1->next = n2;
+        n2->next = n3;
+        n3->next = n4;
+        n4->next = n5;
+        
+        ListNode* k1 = new ListNode(3);
+        ListNode* k2 = new ListNode(4);
+        ListNode* k3 = new ListNode(5);
+        ListNode* k4 = new ListNode(7);
+        ListNode* k5 = new ListNode(9);
+        
+        k1->next = k2;
+        k2->next = k3;
+        k3->next = k4;
+        k4->next = k5;
+        
+        std::vector<ListNode*> v;
+        v.push_back(p1);
+        v.push_back(n1);
+        v.push_back(k1);
+        
+        ListNode* newNode = mergeKLists(v);
+        while (newNode) {
+            std::cout << "e = " << newNode->val << "\n";
+            newNode = newNode->next;
+        }
+    }
     
     return 0;
 }

@@ -11,6 +11,7 @@
 		E4B3ACB422C34A910004A2D3 /* GPString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB222C34A910004A2D3 /* GPString.cpp */; };
 		E4B3ACB722C6F7200004A2D3 /* GPArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */; };
 		E4B3ACBA22C853AF0004A2D3 /* GPList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACB822C853AF0004A2D3 /* GPList.cpp */; };
+		E4B3ACBD22D029F50004A2D3 /* GPStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B3ACBB22D029F50004A2D3 /* GPStack.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		E4B3ACB622C6F7200004A2D3 /* GPArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPArray.hpp; sourceTree = "<group>"; };
 		E4B3ACB822C853AF0004A2D3 /* GPList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPList.cpp; sourceTree = "<group>"; };
 		E4B3ACB922C853AF0004A2D3 /* GPList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPList.hpp; sourceTree = "<group>"; };
+		E4B3ACBB22D029F50004A2D3 /* GPStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPStack.cpp; sourceTree = "<group>"; };
+		E4B3ACBC22D029F50004A2D3 /* GPStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GPStack.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				E4B3ACB522C6F7200004A2D3 /* GPArray.cpp */,
 				E4B3ACB922C853AF0004A2D3 /* GPList.hpp */,
 				E4B3ACB822C853AF0004A2D3 /* GPList.cpp */,
+				E4B3ACBC22D029F50004A2D3 /* GPStack.hpp */,
+				E4B3ACBB22D029F50004A2D3 /* GPStack.cpp */,
 				E4B3ACAA22C34A140004A2D3 /* main.cpp */,
 			);
 			path = LeetCode;
@@ -135,6 +140,7 @@
 			files = (
 				E4B3ACAB22C34A140004A2D3 /* main.cpp in Sources */,
 				E4B3ACB422C34A910004A2D3 /* GPString.cpp in Sources */,
+				E4B3ACBD22D029F50004A2D3 /* GPStack.cpp in Sources */,
 				E4B3ACBA22C853AF0004A2D3 /* GPList.cpp in Sources */,
 				E4B3ACB722C6F7200004A2D3 /* GPArray.cpp in Sources */,
 			);
